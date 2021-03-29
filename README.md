@@ -1,2 +1,2 @@
-# Genius_clone
+# A clone of SoundCloud
 
