@@ -1,2 +1,2 @@
-# A clone of SoundCloud
+# A clone of Flickr
 
