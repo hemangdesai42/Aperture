@@ -1,7 +1,7 @@
 {
-  "name": "genius_clone",
+  "name": "flikr_clone",
   "version": "1.0.0",
-  "description": "A clone of the music site Genius",
+  "description": "A clone of the image site Flikr",
   "main": "index.js",
   "scripts": {
     "heroku-postbuild": "npm run build --prefix frontend",
