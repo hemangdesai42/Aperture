@@ -1,0 +1,38 @@
+body {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;   
+    list-style: none;
+}
+
+html {
+    min-height: 100%;
+    background-image: url('./DSC04149.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.logo {
+    max-height: 90px;
+    position: relative;
+}
+
+.login {
+    padding: 5px 20px;
+    color: white;
+    text-decoration: none;
+    font-size: 20px;
+    float: right;
+    text-align: center;
+}
+
+.signup {
+    border: 1px solid white;
+    background-color: white;
+    padding: 5px 20px;
+    border-radius: 5px;
+    color: black;
+    text-decoration: none;
+    font-size: 20px;
+    float: right;
+    text-align: center;
+}
