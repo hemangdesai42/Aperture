@@ -14,12 +14,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/hemangdesai42/Genius_Clone.git"
+    "url": "git+https://github.com/hemangdesai42/Aperture.git"
   },
   "author": "Hemang Desai",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/hemangdesai42/Genius_Clone/issues"
+    "url": "https://github.com/hemangdesai42/Aperture/issues"
   },
-  "homepage": "https://github.com/hemangdesai42/Genius_Clone#readme"
+  "homepage": "https://github.com/hemangdesai42/Aperture#readme"
 }
