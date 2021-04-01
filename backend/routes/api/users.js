@@ -13,6 +13,9 @@ const { singlePublicFileUpload } = require('../../awsS3');
 const { singleMulterUpload } = require('../../awsS3')
 
 const validateSignup = [
+    check('name')
+        .exists({ checkFalsy: true})
+        .withMessage('Please provide a name.'),
     check('email')
         .exists({ checkFalsy: true })
         .isEmail()
@@ -35,19 +38,21 @@ const validateSignup = [
 // Post /api/users ---Sign up
 router.post(
     "/",
-    singleMulterUpload("image"),
+    // singleMulterUpload("image"),
     validateSignup,
     asyncHandler(async (req, res) => {
-        const { email, password, username } = req.body;
-        const profileImageUrl = await singlePublicFileUpload(req.file);
+        const { name, email, password, username } = req.body;
+        // const profileImageUrl = await singlePublicFileUpload(req.file);
+        console.log(name, email, username)
         const user = await User.signup({
+            name,
             username,
             email,
             password,
-            profileImageUrl,
+            // profileImageUrl,
         });
-
-        setTokenCookie(res, user);
+        
+        await setTokenCookie(res, user);
 
         return res.json({
             user,

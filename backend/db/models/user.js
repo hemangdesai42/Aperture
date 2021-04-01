@@ -4,6 +4,10 @@ const bcrypt = require('bcryptjs');
 
 module.exports = (sequelize, DataTypes) => {
   const User = sequelize.define('User', {
+    name: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
     username: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -48,6 +52,9 @@ module.exports = (sequelize, DataTypes) => {
     });
   User.associate = function (models) {
     // associations can be defined here
+    User.hasMany(models.Photo, { foreignKey: 'userId' });
+    User.hasMany(models.Album);
+    User.hasMany(models.Comment, { foreignKey: 'userId' });
   };
   User.prototype.toSafeObject = function () { // remember, this cannot be an arrow function
     const { id, username, email } = this; // context will be the User instance
@@ -73,9 +80,10 @@ module.exports = (sequelize, DataTypes) => {
       return await User.scope('currentUser').findByPk(user.id);
     }
   };
-  User.signup = async function ({ username, email, password }) {
+  User.signup = async function ({ name, username, email, password }) {
     const hashedPassword = bcrypt.hashSync(password);
     const user = await User.create({
+      name,
       username,
       email,
       hashedPassword,
