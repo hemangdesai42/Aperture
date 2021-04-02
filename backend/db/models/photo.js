@@ -4,13 +4,15 @@ module.exports = (sequelize, DataTypes) => {
     photo: DataTypes.STRING,
     albumId: DataTypes.INTEGER,
     userId: DataTypes.INTEGER,
-    createdAt: DataTypes.DATE
+    createdAt: DataTypes.DATE,
+    updatedAt: DataTypes.DATE
   }, {});
   Photo.associate = function(models) {
     // associations can be defined here
     Photo.belongsTo(models.User, {foreignKey: 'userId'});
     Photo.belongsTo(models.Album, {foreignKey: 'albumId'});
-    // Photo.belongsToMany(models.Tag, { foreignKey: 'photoId' });
+    Photo.hasMany(models.Tag, { foreignKey: 'photoId'});
+    Photo.hasMany(models.Comment, { foreignKey: 'photoId'})
   };
   return Photo;
 };

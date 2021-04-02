@@ -34,7 +34,7 @@ function SignupFormPage() {
         <div className="signup-page">
             <div className="signup-container">
                 <div className="header-container">
-                    <h1>Create Account</h1>
+                    <h1>Sign Up!</h1>
                 </div>
 
                 <form onSubmit={handleSubmit}>

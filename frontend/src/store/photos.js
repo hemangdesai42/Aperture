@@ -1,21 +1,57 @@
-export const LOAD_PHOTOS = "photos/LOAD_PHOTOS";
-export const REMOVE_PHOTOS = "photos/REMOVE_PHOTOS";
-export const UPLOAD_PHOTOS = "photos/UPLOAD_PHOTOS";
+import { csrfFetch } from './csrf';
 
+const UPLOAD_PHOTO = 'UPLOAD_PHOTO'
+const GET_PHOTO = 'GET_PHOTOS'
 
-const load = (photos, userId) => ({
-    type: LOAD_PHOTOS,
-    photos,
-    userId,
+export const setPhoto = (photo) => ({
+    type: UPLOAD_PHOTO,
+    photo,
 });
 
-const remove = (photoId, userId) => ({
-    type: REMOVE_PHOTOS,
-    photoId,
-    userId,
-});
-
-const upload = (photos) => ({
-    type: UPLOAD_PHOTOS,
+export const grabPhotos = (photos) => ({
+    type: GET_PHOTO,
     photos,
 });
+
+export const createPhoto = (userId, photo, id) => async (dispatch) => {
+    const formData = new FormData()
+    formData.append("userId", userId)
+    formData.append("photo", photo)
+
+    const res = await csrfFetch(`/api/photos/${id}`, {
+        method: "POST",
+        headers: { "Content-Type": "multipart/form-data" },
+        body: formData
+    })
+    const data = await res.json();
+    
+    dispatch(setPhoto(data))
+}
+
+export const getPhotos = () => async (dispatch) => {
+    const res = await csrfFetch(`/api/photos/`)
+
+    if (res.ok) {
+        const images = await res.json();
+        console.log(images)
+        dispatch(grabPhotos(images))
+    }
+}
+
+
+export default function photoReducer(state = {}, action) {
+    switch (action.type) {
+        case UPLOAD_PHOTO:
+            return { ...state, [action.photo]: action.photo }
+        case GET_PHOTO:
+            let nextState = { ...state}
+            console.log(action.photos)
+            action.photos.forEach(photo => {
+                console.log(photo.id, '-----')
+                nextState[photo.id] = photo
+            })
+            return nextState
+        default:
+            return state
+    }
+}

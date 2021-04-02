@@ -10,9 +10,9 @@ router.get('/', asyncHandler(async (req, res) => {
 }));
 
 router.post('/', asyncHandler(async (req, res) => {
-    const { photoId, userId, userComment } = req.body;
+    const { photo, userId, userComment } = req.body;
     const comment = await Comment.create({
-        photoId,
+        photo,
         userId,
         userComment
     });

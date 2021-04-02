@@ -25,7 +25,7 @@ function Navigation({ isLoaded }) {
 
     return (
         <li>
-            <NavLink className='home' exact to="/"><img className='logo' src={aperturelogo} alt='' /></NavLink>
+            <NavLink className='home' exact to="/"><img className='logo' src={aperturelogo} alt=''/></NavLink>
             {isLoaded && sessionLinks}
         </li>
     );

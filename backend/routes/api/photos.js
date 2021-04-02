@@ -1,36 +1,34 @@
 const express = require('express');
 const asyncHandler = require('express-async-handler');
-const { singlePublicFileUpload } = require('../../awsS3');
-const { singleMulterUpload } = require('../../awsS3')
-const { User, Photo, Album, Comment, Tag } = require('../../db/models')
+const { Photo } = require('../../db/models')
 
 const router = express.Router();
 
-router.get('/home', asyncHandler(async function (req, res) {
+
+router.post('/:id', asyncHandler(async function (req, res) {
+    const photo = req.params.photo;
+    if (user) {
+        console.log((user), 'user')
+        const newPhoto = await Photo.create({ userId: userId, photo: Photo.photo });
+        return res.json(newPhoto);
+    } else {
+        return res.json({ success: false, message: "Unable to complete your request..." });
+    }
+}));
+
+router.get('/', asyncHandler(async function (req, res) {
     const photos = await Photo.findAll();
     return res.json(photos);
 }));
 
-router.post('/:id', /*singleMulterUpload('image'),*/ asyncHandler(async function (req, res) {
-    let user;
-    if (res.locals.authenticated) {
-        user = res.locals.user;
-        const newPhoto = await Photo.create({ userId: +userId, photo: photoURL });
-        res.json(newPhoto);
-        // return newPhoto;
-    } else {
-        res.json({ success: false, message: "Unable to complete your request..." });
-    }
-}));
-
 router.delete('/:id', asyncHandler(async function (req, res) {
-    const photoId = req.params.id;
+   let user;
     if (res.locals.authenticated) {
         const user = res.locals.user;
-        await Photo.destroy({ where: { userId: user.id, photoId } })
+        await Photo.destroy({ where: { userId: user.id } })
     };
 
-    res.json({ 'deleted': true })
+    return res.json({ 'deleted': true })
 }));
 
 
