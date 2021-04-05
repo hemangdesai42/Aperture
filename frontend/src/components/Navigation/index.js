@@ -23,11 +23,15 @@ function Navigation({ isLoaded }) {
         );
     }
 
+    
+
     return (
+        <ul className='navbar'>
         <li>
             <NavLink className='home' exact to="/"><img className='logo' src={aperturelogo} alt=''/></NavLink>
             {isLoaded && sessionLinks}
         </li>
+        </ul>
     );
 }
 

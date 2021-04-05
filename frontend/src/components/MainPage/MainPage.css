@@ -1,0 +1,25 @@
+.title-container {
+    color: white;
+    font-size: 50px;
+    left: 0;
+    /* line-height: 500px; */
+    margin-top: 10rem;
+    margin-bottom: 10rem;
+    position: absolute;
+    text-align: center;
+    top: 10%;
+    width: 100%;
+}
+
+.second-title {
+    color: white;
+    font-size: 30px;
+    left: 0;
+    /* line-height: 500px; */
+    /* margin-bottom: 10rem; */
+    position: relative;
+    margin-top: -1rem;
+    text-align: center;
+    top: 50%;
+    width: 100%;
+}

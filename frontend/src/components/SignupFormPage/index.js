@@ -14,7 +14,7 @@ function SignupFormPage() {
     const [confirmPassword, setConfirmPassword] = useState("");
     const [errors, setErrors] = useState([]);
 
-    if (sessionUser) return <Redirect to="/home" />;
+    if (sessionUser) return <Redirect to="/photos" />;
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -34,7 +34,7 @@ function SignupFormPage() {
         <div className="signup-page">
             <div className="signup-container">
                 <div className="header-container">
-                    <h1>Sign Up!</h1>
+                    <h1>Sign up for Aperture</h1>
                 </div>
 
                 <form onSubmit={handleSubmit}>
@@ -43,67 +43,70 @@ function SignupFormPage() {
                     </ul>
 
                     <div className="name-container">
-                        <label className="name-label">Name</label>
                         <div>
                             <input
                                 type="text"
                                 value={name}
                                 onChange={(e) => setName(e.target.value)}
                                 required
+                                placeholder="Name"
                             />
                         </div>
                     </div>
 
                     <div className="email-container">
-                        <label className="email-label">Email</label>
-                        <div>
+                        <div className="email-container">
                             <input
                                 type="text"
                                 value={email}
                                 onChange={(e) => setEmail(e.target.value)}
                                 required
+                                placeholder="Email"
                             />
                         </div>
                     </div>
 
                     <div className='username-container'>
-                        <label className='username-label'>Username:</label>
                         <div>
                             <input
                                 type="text"
                                 value={username}
                                 onChange={(e) => setUsername(e.target.value)}
                                 required
+                                placeholder="Username"
                             />
                         </div>
                     </div>
 
                     <div className="password-container">
-                        <label className='password-label'>Password:</label>
                         <div>
                             <input
                                 type="password"
                                 value={password}
                                 onChange={(e) => setPassword(e.target.value)}
                                 required
+                                placeholder="Password"
                             />
                         </div>
                     </div>
 
                     <div className='confirmpw-container'>
-                        <label className='confirmpw-label'>Confirm Password:</label>
                         <div>
                             <input
                                 type="password"
                                 value={confirmPassword}
                                 onChange={(e) => setConfirmPassword(e.target.value)}
                                 required
+                                placeholder="Confirm Password"
                             />
                         </div>
                     </div>
 
                     <button type="submit">Submit</button>
                 </form>
+                <p className='terms'>By Signing up, you agree with Aperture's Terms of Services and Privacy Policy</p>
+                <p className='line'>__________________________________________________________________________________________________</p>
+                <p className='already'>Already an Aperture member? Log in above.</p>
             </div>
         </div>
     );

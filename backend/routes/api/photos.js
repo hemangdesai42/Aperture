@@ -1,6 +1,6 @@
 const express = require('express');
 const asyncHandler = require('express-async-handler');
-const { Photo } = require('../../db/models')
+const { Photo, User } = require('../../db/models')
 
 const router = express.Router();
 
@@ -21,13 +21,16 @@ router.get('/', asyncHandler(async function (req, res) {
     return res.json(photos);
 }));
 
-router.delete('/:id', asyncHandler(async function (req, res) {
-   let user;
-    if (res.locals.authenticated) {
-        const user = res.locals.user;
-        await Photo.destroy({ where: { userId: user.id } })
-    };
+router.get('/:id', asyncHandler(async function (req, res) {
+    const userId = req.params.userId;
+    const photo = req.params.photo;
+    // const id = req.params.id
+    const photos = await Photo.findByPk(userId);
+    return res.json(photos);
+}));
 
+router.delete('/:id', asyncHandler(async function (req, res) {
+    await Photo.destroy({ where:{userId}})
     return res.json({ 'deleted': true })
 }));
 

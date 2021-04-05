@@ -1,0 +1,51 @@
+html {
+    background-image: url('../Navigation/DSC04149.jpg');
+    min-height: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    list-style: none;
+}
+
+.welcome {
+    padding-top: 40px;
+    position: relative;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: white;
+    font-size: 30px;
+    margin-left: 45px;
+    margin-top: 50px;
+    margin-bottom: -40px;
+}
+
+.photos-home {
+    
+}
+
+.photos-container {
+    display: flex;
+    overflow-y: auto;
+    margin-top: 100px;
+    object-fit: scale-down;
+    margin-left: 45px;
+    margin-right: 45px;
+}
+
+.each {
+    display: block;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 5px;
+    /* width: 200px;
+    height: 200px; */
+    object-fit: scale-down;
+}
+
+img {
+    display: block;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    position: relative;
+    border: 1px solid white;
+    max-width: 300px;
+}

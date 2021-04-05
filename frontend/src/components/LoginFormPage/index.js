@@ -29,7 +29,7 @@ function LoginFormPage() {
         <div className="login-page">
             <div className="login-container">
                 <div className="header-container">
-                    <h1>Log In</h1>
+                    <h1 className='title'>Log in to Aperture</h1>
                 </div>
 
                 <form onSubmit={handleSubmit}>
@@ -38,32 +38,35 @@ function LoginFormPage() {
                     </ul>
 
                     <div className="email-container">
-                        <label className="email-label">Username or Email</label>
+                        <label className="email-label"></label>
                         <div>
                             <input
                                 type="text"
                                 value={credential}
                                 onChange={(e) => setCredential(e.target.value)}
                                 required
+                                placeholder='Username or Email'
                             />
                         </div>
                     </div>
 
                     <div className='password-container'>
-                        <label className='password-label'>Password</label>
+                        <label className='password-label'></label>
                         <div>
                             <input
                                 type="password"
                                 value={password}
                                 onChange={(e) => setPassword(e.target.value)}
                                 required
+                                placeholder='Password'
                             />
                         </div>
                     </div>
 
-                    <button type="submit">Log In</button>
-                    <button type="submit">Demo User</button>
+                    <button className='login-button' type="submit">Log In</button>
+                    <button className='demo-user' type="submit">Demo User</button>
                 </form>
+                <p className='not'>Not an Aperture member? Sign up above.</p>
             </div>
         </div>
     );
