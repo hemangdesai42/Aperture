@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import * as sessionActions from '../../store/session';
 import { useDispatch, useSelector } from 'react-redux';
-import { Redirect } from 'react-router-dom';
+import { Redirect, NavLink } from 'react-router-dom';
 import './LoginForm.css'
 
 function LoginFormPage() {
@@ -63,10 +63,12 @@ function LoginFormPage() {
                         </div>
                     </div>
 
-                    <button className='login-button' type="submit">Log In</button>
+                    <button className='login-button' type="submit" onClick={'/photos'}>Log In</button>
                     <button className='demo-user' type="submit">Demo User</button>
                 </form>
-                <p className='not'>Not an Aperture member? Sign up above.</p>
+                <div className='not'>
+                <NavLink to='/signup'>Not an Aperture member? Sign up here.</NavLink>
+                </div>
             </div>
         </div>
     );

@@ -31,21 +31,6 @@ export const getPhoto = (id) => async (dispatch) => {
     }
 }
 
-export const createPhoto = (userId, photo, id) => async (dispatch) => {
-    const formData = new FormData()
-    formData.append("userId", userId)
-    formData.append("photo", photo)
-
-    const res = await csrfFetch(`/api/photos/${id}`, {
-        method: "POST",
-        headers: { "Content-Type": "multipart/form-data" },
-        body: formData
-    })
-    const data = await res.json();
-    
-    dispatch(setPhoto(data))
-}
-
 export const getPhotos = () => async (dispatch) => {
     const res = await csrfFetch(`/api/photos/`)
 
@@ -55,7 +40,7 @@ export const getPhotos = () => async (dispatch) => {
     }
 }
 
-export default function photoReducer(state = {}, action) {
+function photoReducer(state = {}, action) {
     switch (action.type) {
         case UPLOAD_PHOTO:
             return { ...state, [action.photo]: action.photo }
@@ -68,4 +53,6 @@ export default function photoReducer(state = {}, action) {
         default:
             return state
     }
-}
+};
+
+export default photoReducer;

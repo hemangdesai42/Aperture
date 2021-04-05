@@ -7,7 +7,7 @@ function MainPage() {
         <div className="title-container">
             <p className="title">Welcome to Aperture</p>
             <p className="second-title">
-                    Join the Aperture community, where concrete jungles are captured!
+                Join the Aperture community where every street, architectural feat, and monument are captured and shared!
                 </p>
          </div>
     )

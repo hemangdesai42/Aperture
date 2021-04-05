@@ -7,8 +7,13 @@ html {
     list-style: none;
 }
 
+.photos-home {
+    margin: 50px;
+    margin-top: 90px;
+    border: 1px solid white    
+}
+
 .welcome {
-    padding-top: 40px;
     position: relative;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     color: white;
@@ -18,9 +23,6 @@ html {
     margin-bottom: -40px;
 }
 
-.photos-home {
-    
-}
 
 .photos-container {
     display: flex;
@@ -46,6 +48,6 @@ img {
     flex-wrap: wrap;
     justify-content: space-between;
     position: relative;
-    border: 1px solid white;
+    /* border: 1px solid white; */
     max-width: 300px;
 }

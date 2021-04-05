@@ -1,3 +1,16 @@
+.login {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    /* padding-left: 100px; */
+    /* margin-left: 1000px; */
+    color: white;
+    text-decoration: none;
+    font-size: 20px;
+    /* float: right; */
+    /* text-align: right; */
+    position: absolute;
+}
+
 .signup {
     border: 1px solid white;
     background-color: white;
@@ -10,15 +23,6 @@
     text-align: center;
 } 
 
-.login {
-    padding: 5px 20px;
-    color: white;
-    text-decoration: none;
-    font-size: 20px;
-    float: right;
-    text-align: right;
-    position: relative;
-}
 
 
 .logo {
@@ -28,7 +32,7 @@
 }
 
 .navbar {
-    background: #00000031;
+    background: #252a33;
     display: inline-block;
     padding: 5px 5px 5px 5px;
     justify-content: center;
@@ -48,7 +52,7 @@
     display: flex;
     align-items: center;
     height: 59px;
-    justify-content: space-between;
+    /* justify-content: space-between; */
     padding: 0 24px;
     margin: 0px;
     z-index: 2;

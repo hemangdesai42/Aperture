@@ -1,48 +1,36 @@
 // frontend/src/components/Navigation/ProfileButton.js
 import React, { useState, useEffect } from "react";
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { Redirect } from "react-router";
 import * as sessionActions from '../../store/session';
+import * as sessionAct from '../../store/upload';
+import './ProfileButton.css';
 
 function ProfileButton({ user }) {
     const dispatch = useDispatch();
-    const [showMenu, setShowMenu] = useState(false);
+    const [create, createPhoto] = useState()
+    const sessionUser = useSelector(state => state.session.user);
 
-    const openMenu = () => {
-        if (showMenu) return;
-        setShowMenu(true);
-    };
 
-    useEffect(() => {
-        if (!showMenu) return;
-
-        const closeMenu = () => {
-            setShowMenu(false);
-        };
-
-        document.addEventListener('click', closeMenu);
-
-        return () => document.removeEventListener("click", closeMenu);
-    }, [showMenu]);
+    const set = () => {
+        dispatch(sessionAct.uploadImage());;
+    }
 
     const logout = (e) => {
         e.preventDefault();
         dispatch(sessionActions.logout());
     };
 
+
     return (
         <>
-            <button onClick={openMenu}>
-                <i className="fas fa-user-circle" />
-            </button>
-            {showMenu && (
-                <ul className="profile-dropdown">
-                    <li>{user.username}</li>
-                        <li>{user.email}</li>
-                            <li>
-                                <button onClick={logout}>Log Out</button>
-                            </li>
-                </ul>
-            )}
+            <ul className="profile-dropdown">
+                        <li className='logout_container'>
+                            <button className='logoutbutton' onClick={logout}>Log Out</button>
+                            <button className='upload' onClick={set}>Upload</button>
+                            <li className='hello'>Hello, {user.username}!</li>
+                        </li>
+            </ul>
         </>
     );
 }

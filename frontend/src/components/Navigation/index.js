@@ -23,8 +23,6 @@ function Navigation({ isLoaded }) {
         );
     }
 
-    
-
     return (
         <ul className='navbar'>
         <li>
